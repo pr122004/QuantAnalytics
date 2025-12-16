@@ -1,0 +1,10 @@
+python-dateutil
+websockets
+pandas
+numpy
+duckdb
+statsmodels
+scipy
+plotly
+streamlit
+typing-extensions
