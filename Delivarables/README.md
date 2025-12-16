@@ -18,9 +18,8 @@ This system addresses that need by combining **live data ingestion**, **standard
 
 ---
 
-## High-Level Architecture
-
-Market Data Source (WebSocket) -> Ingestion Layer -> Storage Layer (DuckDB) -> Analytics Layer -> Service Layer -> Frontend Dashboard
+## Architecture Diagram
+<img width="11629" height="2670" alt="Architecture-Diagram" src="https://github.com/user-attachments/assets/2417bf30-e564-49e5-86b6-dfac95789e2e" />
 
 ---
 
