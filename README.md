@@ -20,19 +20,7 @@ This system addresses that need by combining **live data ingestion**, **standard
 
 ## High-Level Architecture
 
-Market Data Source (WebSocket)
-           ↓
-     Ingestion Layer
-           ↓
-  Storage Layer (DuckDB)
-           ↓
-     Analytics Layer
-           ↓
-      Service Layer
-           ↓
-    Frontend Dashboard
-
-
+Market Data Source (WebSocket) -> Ingestion Layer -> Storage Layer (DuckDB) -> Analytics Layer -> Service Layer -> Frontend Dashboard
 
 ---
 
@@ -168,6 +156,7 @@ Until enough data is available:
 
 
 ---
+##
 
 ## Running the Project
 
