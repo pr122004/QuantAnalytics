@@ -39,8 +39,23 @@ Data providers and storage backends can be replaced with minimal changes.
 No REST APIs, message queues, or microservices were introduced, as they are not required for the assignment scope.
 
 ---
+## Methodology
 
-## Technology Stack & Rationale
+The project was built step by step, focusing on getting each part working correctly before moving to the next.
+
+First, live market data is streamed using a WebSocket connection. At this stage, the system only focuses on reliably receiving and storing data, without running any analytics. Keeping ingestion lightweight helps avoid delays or dropped data when the stream is active.
+
+Next, the incoming raw trade data is stored in duckDB database. For analysis, this raw data is resampled into fixed time intervals and aligned across assets. All calculations are performed on this resampled, time-aligned data so that statistical metrics remain stable and comparable across different timeframes.
+
+Once the data is prepared, core analytics are computed using standard quantitative techniques. This includes estimating the hedge ratio using OLS regression, computing the spread between assets, and calculating rolling statistics such as z-score and correlation. Stationarity checks using the Augmented Dickey-Fuller test are provided as an on-demand diagnostic rather than being forced continuously.
+
+On top of the raw analytics, an interpretation and alerting layer was added. Instead of only displaying numbers, the system explains what the current signals indicate and highlights conditions that deserve attention, such as extreme deviations, weakening correlations, volatility spikes, or potential stationarity issues. These alerts are informational and meant to support monitoring, not automated decision-making.
+
+Finally, everything is presented through an interactive dashboard. Prices, signals, alerts, and diagnostics are separated into different views so the system remains easy to explore. Changing inputs like asset pairs or rolling windows updates the analytics in real time, making the dashboard suitable for exploratory research.
+
+---
+
+## Technology Stack 
 
 ### Language
 - **Python 3**
